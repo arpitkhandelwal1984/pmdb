@@ -19,7 +19,7 @@
 <div id="w">
     <div id="content" class="clearfix">
         <div id="userphoto"><img src="images/avatar.png" alt="default avatar"></div>
-        <h1>Arpit Khandelwal <%= user.firstName %></h1>
+        <h1><%= user.fb.firstName %></h1>
 
         <nav id="profiletabs">
             <ul class="clearfix">
@@ -30,12 +30,17 @@
             </ul>
         </nav>
 
-        <section id="movies">
+        <section id="movie">
             <ul>
-                <li>Lord of the ring</li>
-                <li>The Matrix</li>
-                <li>Star Wars</li>
-                <li>Startrek</li>
+                <% var jsondata = JSON.parse(moviesJSON)%>
+                <% if (jsondata) { %>
+                <% console.log(jsondata.data)%>
+                <ul>
+                    <% for(var i=0; i < jsondata.data.length; i++) { %>
+                          <li><%= jsondata.data[i].name %></li>
+                    <% } %>
+                </ul>
+                <% } %>
             </ul>
         </section>
 

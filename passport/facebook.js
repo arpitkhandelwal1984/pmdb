@@ -16,7 +16,7 @@ module.exports = function(passport) {
 
     	console.log('profile', profile);
 
-		// asynchronous
+       	// asynchronous
 		process.nextTick(function() {
 
 			// find the user in the database based on their facebook id
@@ -47,13 +47,15 @@ module.exports = function(passport) {
                     newUser.fb.picture = 'https://graph.facebook.com/' + profile.id + '/picture?width=9999&height=9999';
                     newUser.fb.profileUrl = profile.profileUrl;
                     newUser.fb.status = profile.status;
-					// save our user to the database
+                    
+                    // save our user to the database
 	                newUser.save(function(err) {
 	                    if (err)
 	                        throw err;
 
 	                    // if successful, return the new user
-	                    return done(null, newUser);
+	                    //return done(null, newUser);
+                        return done(null, newUser);
 	                });
 	            }
 

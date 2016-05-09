@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var fbProfileData = require('../passport/facebookProfileData');
 var isAuthenticated = function (req, res, next) {
   // if user is authenticated in the session, call the next() to call the next request handler
   // Passport adds this method to request object. A middleware is allowed to add properties to
@@ -44,9 +44,14 @@ module.exports = function(passport){
   });
 
   router.get('/movies', function(req, res){
-    res.render('movies', {
-      title: 'About',
-      user: req.user
+    fbProfileData.getFbData(null,'/me/movies',function(data){
+      console.log('Here are the movies I have seen so far : ');
+      console.log(data);
+      res.render('movies', {
+        title: 'About',
+        moviesJSON: data,
+        user: req.user
+      });
     });
   });
 

@@ -8,7 +8,7 @@ module.exports = function(passport) {
         clientID        : fbConfig.appID,
         clientSecret    : fbConfig.appSecret,
         callbackURL     : fbConfig.callbackUrl,
-        profileFields   : ["id", "birthday", "email", "first_name", "gender", "last_name", "displayName"]
+        profileFields   : ["id", "birthday", "email", "first_name", "gender", "last_name", "displayName", "profileUrl", "relationship_status"]
     },
 
     // facebook will send back the tokens and profile
@@ -43,7 +43,10 @@ module.exports = function(passport) {
 	                newUser.fb.lastName = profile.name.familyName; // look at the passport user profile to see how names are returned
 	                newUser.fb.displayName = profile.displayName;
                     newUser.fb.email = profile.emails[0].value; // facebook can return multiple emails so we'll take the first
-
+					newUser.fb.gender = profile._json.gender;
+                    newUser.fb.picture = 'https://graph.facebook.com/' + profile.id + '/picture?width=9999&height=9999';
+                    newUser.fb.profileUrl = profile.profileUrl;
+                    newUser.fb.status = profile.status;
 					// save our user to the database
 	                newUser.save(function(err) {
 	                    if (err)

@@ -8,7 +8,9 @@ module.exports = mongoose.model('User',{
 		firstName: String,
 		lastName: String,
 		email: String,
-		displayName: String
+		displayName: String,
+		gender: String,
+		picture: String
 	},
 	twitter: {
 		id: String,

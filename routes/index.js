@@ -44,7 +44,7 @@ module.exports = function(passport){
   });
 
   router.get('/movies', function(req, res){
-    fbProfileData.getFbData(null,'/me/movies',function(data){
+    fbProfileData.getFbData(null,'/me/video.watches',function(data){
       console.log('Here are the movies I have seen so far : ');
       console.log(data);
       res.render('movies', {

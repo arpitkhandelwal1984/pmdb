@@ -37,7 +37,7 @@
                 <% console.log(jsondata.data)%>
                 <ul>
                     <% for(var i=0; i < jsondata.data.length; i++) { %>
-                          <li><%= jsondata.data[i].name %></li>
+                          <li><%= jsondata.data[i].data.movie.title %></li>
                     <% } %>
                 </ul>
                 <% } %>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html">
+    <title>User Profile with Content Tabs - Design Shack Demo</title>
+    <meta name="author" content="Jake Rocheleau">
+    <link rel="shortcut icon" href="http://designshack.net/favicon.ico">
+    <link rel="icon" href="http://designshack.net/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="all" href="css/styles.css">
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+</head>
+
+<body>
+<div id="topbar">
+    <a>Welcome to your own personal movie database!</a>
+</div>
+
+<div id="w">
+    <div id="content" class="clearfix">
+        <div id="userphoto"><img src="images/avatar.png" alt="default avatar"></div>
+        <h1>Arpit Khandelwal <%= user.firstName %></h1>
+
+        <nav id="profiletabs">
+            <ul class="clearfix">
+                <li><a href="/home">Profile</a></li>
+                <li><a href="/movies" class="sel">Watched Movies</a></li>
+                <li><a href="/tvshows">Watched Tele-Shows</a></li>
+                <li><a href="/wishlist">Wishlist</a></li>
+            </ul>
+        </nav>
+
+        <section id="movies">
+            <ul>
+                <li>Lord of the ring</li>
+                <li>The Matrix</li>
+                <li>Star Wars</li>
+                <li>Startrek</li>
+            </ul>
+        </section>
+
+    </div><!-- @end #content -->
+</div><!-- @end #w --></body>
+</html>

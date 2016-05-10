@@ -45,8 +45,7 @@ module.exports = function(passport){
 
   router.get('/movies', function(req, res){
     fbProfileData.getFbData(null,'/me/video.watches',function(data){
-      console.log('Here are the movies I have seen so far : ');
-      console.log(data);
+      // console.log(data);
       res.render('movies', {
         title: 'About',
         moviesJSON: data,
@@ -56,9 +55,13 @@ module.exports = function(passport){
   });
 
   router.get('/tvshows', function(req, res){
-    res.render('tvshows', {
-      title: 'Contact',
-      user: req.user
+    fbProfileData.getFbData(null,'/me/video.watches',function(data){
+      // console.log(data);
+      res.render('tvshows', {
+        title: 'About',
+        tvShowsJSON: data,
+        user: req.user
+      });
     });
   });
 

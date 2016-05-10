@@ -1,5 +1,5 @@
 var https = require('https');
-var token = "EAACEdEose0cBAJOuFNtHbceEakZAoiRsXYWDEUZBh2cvdwHFNcJd0FmDEfxpesvpe0qO2uxUFvPpjJpwhIo2u4ltjfYf3vFcNlhYr5gk4OLnVp7QoZBvuGuoSdnAyFg6g9Pw6WLO2GL4rG8YAYVe9fjJHNZAvQCFIsWUyDxAgz4hm0NlLJQA";
+var token = "EAAMbKVfqFOoBABflcxWqTJLJKvcKAChiMyyesRbqwCJfTguunpRvkwZBwEmPHfztZBnsyDgZBE5M2tU78mKo6S65s6LjegNAU4hdGbJtTZBhAhzVpZCqO4EAuWsZA6xav5S7VeIlcmNedoXoUsvJD6VKeSvkPKSpwRGUBAeZCMdfQZDZD";
 
 exports.getFbData = function(accessToken, apiPath, callback) {
     var options = {

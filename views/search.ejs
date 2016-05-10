@@ -23,11 +23,10 @@
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script>
-        var apikey = "myapikey";
         var baseUrl = "http://api.rottentomatoes.com/api/public/v1.0";
 
         // construct the uri with our apikey
-        var moviesSearchUrl = baseUrl + '/movies.json?apikey=' + 'ny97sdcpqetasj8a4v2na8va';
+        var moviesSearchUrl = baseUrl + '/movies.json?apikey=' + '<%= rtConfig.apiKey %>';
 
         $(document).ready(function () {
             // send off the query
@@ -57,6 +56,7 @@
     </script>
 </head>
 <body>
+
 <div id="topbar">
     <a>Welcome to your own personal movie database!</a>
 </div>
@@ -64,7 +64,6 @@
 <div id="w">
     <div id="content" class="clearfix">
         <h1><%= user.fb.displayName %></h1>
-
         <nav id="profiletabs">
             <ul class="clearfix">
                 <li><a href="/home">Profile</a></li>

@@ -9,6 +9,16 @@
     <link rel="icon" href="http://designshack.net/favicon.ico">
     <link rel="stylesheet" type="text/css" media="all" href="css/styles.css">
     <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -18,24 +28,20 @@
 
 <div id="w">
     <div id="content" class="clearfix">
-        <div id="userphoto"><img src=<%= user.fb.picture %> alt="default avatar"></div>
         <h1><%= user.fb.displayName %></h1>
 
         <nav id="profiletabs">
             <ul class="clearfix">
-                <li><a href="/home" class="sel">Profile</a></li>
+                <li><a href="/home">Profile</a></li>
                 <li><a href="/movies">Watched Movies</a></li>
-                <li><a href="/tvshows">Watched Tele-Shows</a></li>
+                <li><a href="/tvshows" class="sel">Watched Tele-Shows</a></li>
                 <li><a href="/wishlist">Wishlist</a></li>
                 <li><a href="/search">Search</a></li>
             </ul>
         </nav>
 
-        <section id="bio">
-            <p>Name : <%= user.fb.firstName %> </a> </p>
-            <p>Email : <%= user.fb.email %> </a> </p>
-            <p>Gender : <%= user.fb.gender %> </a> </p>
-            <p>About Me : <%= user.fb.about %></p>
+        <section id="movie">
+
         </section>
 
     </div><!-- @end #content -->

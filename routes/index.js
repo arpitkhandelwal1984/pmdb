@@ -65,6 +65,14 @@ module.exports = function(passport){
     });
   });
 
+    router.get('/wishlist', isAuthenticated, function (req, res) {
+        res.render('wishlist', {user: req.user});
+    });
+
+    router.get('/search', isAuthenticated, function (req, res) {
+        res.render('search', {user: req.user});
+    });
+
   /* Handle Logout */
   router.get('/signout', function(req, res) {
     req.logout();

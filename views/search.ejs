@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html">
+    <title>User Profile with Content Tabs - Design Shack Demo</title>
+    <meta name="author" content="Jake Rocheleau">
+    <link rel="shortcut icon" href="http://designshack.net/favicon.ico">
+    <link rel="icon" href="http://designshack.net/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="all" href="css/styles.css">
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            vert-align: middle;
+            horiz-align: center;
+        }
+
+        th, td {
+            padding: 5px;
+            vertical-align: middle;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script>
+        var apikey = "myapikey";
+        var baseUrl = "http://api.rottentomatoes.com/api/public/v1.0";
+
+        // construct the uri with our apikey
+        var moviesSearchUrl = baseUrl + '/movies.json?apikey=' + 'ny97sdcpqetasj8a4v2na8va';
+
+        $(document).ready(function () {
+            // send off the query
+            $('#search').click(function () {
+                $.ajax({
+                    url: moviesSearchUrl + '&q=' + encodeURI($('#movietitle').val()),
+                    dataType: "jsonp",
+                    success: searchCallback
+                });
+            });
+        });
+
+        // callback for when we get back the results
+        function searchCallback(data) {
+            $('#records_table').html("");
+            var movies = data.movies;
+            $('<tr>').html("<td> Title </td> <td> Poster</td> <td> Movie </td> <td> Tv-Show </td> <td> Wishlist</td>").appendTo('#records_table');
+            $.each(movies, function (index, movie) {
+                $('<tr>').html(
+                        "<td>" + movie.title + "</td>" +
+                        "<td>" + '<img src="' + movie.posters.thumbnail + '" />' + "</td>" +
+                        "<td><input type='radio' name=" + index + "/>    &nbsp;   </td>" +
+                        "<td><input type='radio' name=" + index + "/>    &nbsp;   </td>" +
+                        "<td><input type='radio' name=" + index + "/>    &nbsp;   </td>").appendTo('#records_table');
+            });
+        }
+    </script>
+</head>
+<body>
+<div id="topbar">
+    <a>Welcome to your own personal movie database!</a>
+</div>
+
+<div id="w">
+    <div id="content" class="clearfix">
+        <h1><%= user.fb.displayName %></h1>
+
+        <nav id="profiletabs">
+            <ul class="clearfix">
+                <li><a href="/home">Profile</a></li>
+                <li><a href="/movies">Watched Movies</a></li>
+                <li><a href="/tvshows">Watched Tele-Shows</a></li>
+                <li><a href="/wishlist">Wishlist</a></li>
+                <li><a href="/search" class="sel">Search</a></li>
+            </ul>
+        </nav>
+        <input id="movietitle" type="text" class="search" placeholder="Search..." required>
+        <input id="search" type="button" class="button" value="Search">
+        </p>
+        <table id="records_table"></table>
+    </div><!-- @end #content -->
+</div><!-- @end #w -->
+</body>
+</html>

@@ -8,7 +8,7 @@ module.exports = function(passport) {
         clientID        : fbConfig.appID,
         clientSecret    : fbConfig.appSecret,
         callbackURL     : fbConfig.callbackUrl,
-        profileFields   : ["id", "birthday", "email", "first_name", "gender", "last_name", "displayName", "profileUrl", "bio"]
+			profileFields: ["id", "birthday", "email", "first_name", "gender", "last_name", "displayName", "profileUrl", "about"]
     },
 
     // facebook will send back the tokens and profile
@@ -46,7 +46,7 @@ module.exports = function(passport) {
 					newUser.fb.gender = profile._json.gender;
                     newUser.fb.picture = 'https://graph.facebook.com/' + profile.id + '/picture?width=9999&height=9999';
                     newUser.fb.profileUrl = profile.profileUrl;
-                    newUser.fb.status = profile.status;
+					newUser.fb.about = "I am a Test User created by my master Arpit to test his latest invention PMDB.";
                     
                     // save our user to the database
 	                newUser.save(function(err) {

@@ -11,7 +11,7 @@ module.exports = mongoose.model('User',{
 		displayName: String,
 		gender: String,
 		picture: String,
-		movies: String
+		about: String
 	},
 	twitter: {
 		id: String,
